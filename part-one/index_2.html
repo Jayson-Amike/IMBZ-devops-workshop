@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevOps Workshop | YorkU</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #010029;
+            color: white;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00daff;
+        }
+
+        nav a {
+            color: #d8d8e8;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #00daff;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 8%;
+            background:
+                radial-gradient(circle at 80% 30%, rgba(0,218,255,0.12), transparent 30%),
+                radial-gradient(circle at 20% 70%, rgba(255,102,196,0.10), transparent 30%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid #00daff;
+            border-radius: 30px;
+            color: #00daff;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 7vw, 75px);
+            line-height: 1.05;
+            margin: 0 0 25px;
+        }
+
+        .highlight {
+            color: #00daff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #d8d8e8;
+            max-width: 700px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 25px;
+            background: #ff66c4;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            background: #ff83d0;
+        }
+
+        /* SECTIONS */
+
+        .section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #aaaac5;
+            font-size: 18px;
+        }
+
+        /* TOOL CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+            background: #11113d;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #00daff;
+        }
+
+        .card-number {
+            color: #ff66c4;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .card h3 {
+            color: #00daff;
+            font-size: 24px;
+            margin: 12px 0;
+        }
+
+        .card p {
+            color: #d8d8e8;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* WORKSHOP CHALLENGE */
+
+        .challenge {
+            background: #080833;
+            text-align: center;
+            padding: 70px 8%;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .challenge h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .challenge p {
+            max-width: 700px;
+            margin: auto;
+            color: #d8d8e8;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .command-box {
+            max-width: 600px;
+            margin: 30px auto 0;
+            padding: 20px;
+            background: #010029;
+            border: 1px solid #00daff;
+            border-radius: 10px;
+            text-align: left;
+            font-family: monospace;
+            color: #00daff;
+        }
+
+        /* PARTICIPANTS */
+
+        .participants {
+            padding: 80px 8%;
+        }
+
+        .participant-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .participant {
+            background: #11113d;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #ff66c4;
+        }
+
+        .participant h3 {
+            margin: 0 0 8px;
+            color: white;
+            font-size: 22px;
+        }
+
+        .participant .year {
+            color: #00daff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .participant p {
+            color: #bdbdd2;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 8%;
+            text-align: center;
+            color: #8888a5;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .participant-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero,
+            .section,
+            .participants {
+                padding: 60px 20px;
+            }
+
+            .cards,
+            .participant-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header>
+        <div class="logo">
+            DevOps<span>Lab</span>
+        </div>
+
+        <nav>
+            <a href="#tools">Tools</a>
+            <a href="#challenge">Challenge</a>
+            <a href="#participants">Participants</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="tag">
+                    YORKU × IBM Z
+                </div>
+
+                <h1>
+                    From <span class="highlight">Code</span>
+                    to Deployment
+                </h1>
+
+                <p>
+                    Welcome to the YorkU Data Science Club and IBM Z
+                    hands-on DevOps Workshop.
+                </p>
+
+                <p>
+                    Today you'll connect to a Linux server, work with Git,
+                    package an application with Docker, and explore how
+                    CI/CD can move code from development to deployment.
+                </p>
+
+                <a class="button" href="#tools">
+                    Start the Workshop →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOOLS -->
+
+        <section class="section" id="tools">
+
+            <div class="section-title">
+                <h2>The DevOps Toolkit</h2>
+                <p>Four technologies. One workflow.</p>
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="card-number">01</div>
+                    <h3>Linux</h3>
+                    <p>
+                        Connect to and work inside a remote Linux
+                        server using the command line.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-number">02</div>
+                    <h3>Git</h3>
+                    <p>
+                        Track changes to code, create commits,
+                        and collaborate through GitHub.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-number">03</div>
+                    <h3>Docker</h3>
+                    <p>
+                        Package an application and its dependencies
+                        into a portable container.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-number">04</div>
+                    <h3>CI/CD</h3>
+                    <p>
+                        Automate the process of building, testing,
+                        and deploying software.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHALLENGE -->
+
+        <!-- CLONE -->
+
+<section class="challenge" id="clone">
+
+    <h2>1. Clone the Workshop</h2>
+
+    <p>
+        First, connect to the workshop server through SSH.
+        Then clone the website repository onto your machine.
+    </p>
+
+    <div class="command-box">
+        git clone YOUR-GITHUB-REPOSITORY-URL<br>
+        cd devops-workshop
+    </div>
+
+    <p style="margin-top: 25px;">
+        This downloads a copy of the project from GitHub
+        onto your computer.
+    </p>
+
+</section>
+
+<!-- RUN YOUR WEBSITE -->
+
+<section class="challenge" id="run">
+
+    <h2>2. Run Your Website</h2>
+
+    <p>
+        Once you've cloned the project, move into the project folder
+        and start a simple web server.
+    </p>
+
+    <div class="command-box">
+        cd devops-workshop<br><br>
+        python3 -m http.server 8001
+    </div>
+
+    <p style="margin-top: 25px;">
+        Your port number is assigned to you. Replace
+        <strong>8001</strong> with your assigned port.
+    </p>
+
+    <div class="command-box">
+        http://YOUR-PI-IP:8001
+    </div>
+
+    <p style="margin-top: 25px;">
+        Open the address above in your browser. You should now
+        see your copy of the workshop website running from the
+        Raspberry Pi.
+    </p>
+
+    <p style="margin-top: 25px; color: #00daff;">
+        💡 Keep this terminal running while you view your website.
+        Press Ctrl + C when you want to stop the server.
+    </p>
+
+</section>
+
+<!-- GIT CHALLENGE -->
+
+<section class="challenge" id="challenge">
+
+    <h2>2. Make Your First Change</h2>
+
+    <p>
+        Open <strong>index.html</strong> and add your name
+        to the Workshop Participants section.
+    </p>
+
+    <div class="command-box">
+        git add index.html<br>
+        git commit -m "Add my name"<br>
+        git push
+    </div>
+
+    <p style="margin-top: 25px;">
+        Your change is now saved in Git and pushed to GitHub.
+    </p>
+
+</section>
+
+
+        <!-- PARTICIPANTS -->
+
+        <section class="participants" id="participants">
+
+            <div class="section-title">
+
+                <h2>Workshop Participants</h2>
+
+                <p>
+                    Add yourself to the website!
+                    Make a change → commit → push.
+                </p>
+
+            </div>
+
+
+            <div class="participant-grid">
+
+                <!--
+                    ================================
+                    ADD YOUR NAME HERE
+                    ================================
+
+                    Copy this card and change the information.
+
+                    Example:
+
+                    <div class="participant">
+                        <h3>Your Name</h3>
+                        <div class="year">YEAR: 3</div>
+                        <p>
+                            Something you want to learn
+                            about DevOps.
+                        </p>
+                    </div>
+
+                    Then:
+
+                    git add index.html
+                    git commit -m "Add my name"
+                    git push
+                -->
+
+
+                <!-- EXAMPLE -->
+
+                <div class="participant">
+                    <h3>James</h3>
+                    <div class="year">YEAR: 3</div>
+                    <p>
+                        This is my first time building a
+                        Git-based workshop project.
+                    </p>
+                </div>
+
+
+                <!-- ADD YOUR CARD BELOW -->
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        YorkU Data Science Club × IBM Z
+    </footer>
+
+</body>
+</html>

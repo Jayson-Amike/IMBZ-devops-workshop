@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Workshop | YorkU</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #010029;
+            color: white;
+        }
+
+        /* NAVIGATION */
+        header {
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff00ea;
+        }
+
+        nav a {
+            color: #d8d8e8;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #00daff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 8%;
+            background: 
+                radial-gradient(circle at 80% 30%, rgba(0,218,255,0.12), transparent 30%),
+                radial-gradient(circle at 20% 70%, rgba(255,102,196,0.10), transparent 30%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid #00daff;
+            border-radius: 30px;
+            color: #00daff;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 7vw, 75px);
+            line-height: 1.05;
+            margin: 0 0 25px;
+        }
+
+        .highlight {
+            color: #00daff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #d8d8e8;
+            max-width: 700px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 25px;
+            background: #ff66c4;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            background: #ff83d0;
+        }
+
+        /* SECTIONS */
+        .section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #aaaac5;
+            font-size: 18px;
+        }
+
+        /* WORKSHOP CHALLENGE */
+        .challenge {
+            background: #080833;
+            text-align: center;
+            padding: 70px 8%;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .challenge h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .challenge p {
+            max-width: 700px;
+            margin: auto;
+            color: #d8d8e8;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .command-box {
+            max-width: 600px;
+            margin: 30px auto 0;
+            padding: 20px;
+            background: #010029;
+            border: 1px solid #00daff;
+            border-radius: 10px;
+            text-align: left;
+            font-family: monospace;
+            color: #00daff;
+        }
+
+        /* PARTICIPANTS */
+       .participants {
+            padding: 80px 8%;
+            text-align: center; /* Centers inline elements inside the section */
+        }
+
+        .participant-grid {
+            display: inline-grid; /* Keeps the grid tightly wrapped to its items */
+            grid-template-columns: repeat(3, 350px); /* Forces a clean 2-column layout */
+            gap: 25px;
+            margin: 40px auto 0 auto;
+            text-align: left; /* Keeps the text inside the cards left-aligned and readable */
+        }
+        .participant {
+            background: #11113d;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #ff66c4;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .participant h3 {
+            margin: 0 0 8px;
+            color: white;
+            font-size: 22px;
+        }
+
+        .participant .year {
+            color: #00daff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .participant p {
+            color: #bdbdd2;
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .participant a.linkedin-btn {
+            display: inline-block;
+            background: rgba(0, 218, 255, 0.1);
+            color: #00daff;
+            border: 1px solid #00daff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            text-decoration: none;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .participant a.linkedin-btn:hover {
+            background: #00daff;
+            color: #010029;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 35px 8%;
+            text-align: center;
+            color: #8888a5;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            .participant-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px;
+            }
+            .participants {
+                padding: 60px 20px;
+            }
+            .participant-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">YorkU <span>IBMZ</span></div>
+    </header>
+
+    <main>
+        <!-- PARTICIPANTS -->
+        <section class="participants" id="participants">
+            <div class="section-title">
+                <h2>Workshop Participants</h2>
+                <p>
+                    Add yourself to the website! 
+                    Make a change → commit → push.
+                </p>
+            </div>
+
+            <div class="participant-grid">
+              
+
+                <!-- DYNAMIC PARTICIPANT CARD (Can be rendered via Python/Flask or hardcoded by students) -->
+              <div class="participant-grid">
+                {% for profile in profiles %}
+                <div class="participant">
+                    <div>
+                        <h3>{{ profile.name }}</h3>
+                        <div class="year">{{ profile.year }}</div>
+                        <p>{{ profile.goal }}</p>
+                    </div>
+                    <a href="{{ profile.linkedin }}" target="_blank" class="linkedin-btn">View LinkedIn ↗</a>
+                </div>
+                {% endfor %}
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        IBM Z & York U Data Science Club
+    </footer>
+
+</body>
+</html>
